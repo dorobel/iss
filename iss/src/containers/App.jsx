@@ -53,6 +53,9 @@ class App extends Component {
             .then(position => {
                 return this.setState({ lng: position.iss_position.longitude, lat: position.iss_position.latitude })
             })
+            .catch(error => {
+                return error
+            })
     }
 
     wrapperFunction = () => {
@@ -61,13 +64,13 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.map)
         return (
             <div>
                 <div ref={el => this.mapContainer = el} className='mapContainer' />
                 <div className='tc'>
                     <button onClick={this.wrapperFunction} className='button'>Marker on map!</button>
                     <h4 className='sidebarStyle'> ISS Position: Longitude {this.state.lng} | Latitude {this.state.lat} </h4>
+                    <h1 className='error'>{this.error}</h1>
                 </div>
             </div >
         )
