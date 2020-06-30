@@ -1,6 +1,6 @@
 {
     "name": "iss",
-    "homepage": "https://dorobel.github.io/iss/",
+    "homepage": "http://dorobel.github.io/iss/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
