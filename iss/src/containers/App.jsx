@@ -18,6 +18,7 @@ class App extends Component {
     componentDidMount() {
         this.generateMap()
         this.fetch()
+        this.changeHeading()
     }
 
 
@@ -55,9 +56,18 @@ class App extends Component {
             })
     }
 
+
     wrapperFunction = () => {
         this.fetch();
         this.addMarker();
+    }
+
+
+    changeHeading = () => {
+        document.getElementById('sidebarStyle').innerText = `ISS Position: Longitude ${this.state.lng}  | Latitude  ${this.state.lat}`;
+        document.getElementById('sidebarStyle').textContent = `ISS Position: Longitude ${this.state.lng}  | Latitude  ${this.state.lat}`;
+        setInterval(this.fetch, 1000)
+        setTimeout(this.changeHeading, 1000);
     }
 
     render() {
@@ -65,8 +75,9 @@ class App extends Component {
             <div>
                 <div ref={el => this.mapContainer = el} className='mapContainer' />
                 <div className='tc'>
-                    <button onClick={this.wrapperFunction} className='button'>Marker on map!</button>
-                    <h4 className='sidebarStyle'> ISS Position: Longitude {this.state.lng} | Latitude {this.state.lat} </h4>
+                    <button onClick={this.wrapperFunction} className='button f7 link dim ph3 pv2 mb2 dib white bg-black'>Marker on map!</button>
+                    <h4 id='sidebarStyle' className='sidebarStyle'>
+                    </h4>
                 </div>
             </div >
         )
