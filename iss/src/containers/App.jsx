@@ -66,8 +66,8 @@ class App extends Component {
     changeHeading = () => {
         document.getElementById('sidebarStyle').innerText = `ISS Position: Longitude ${this.state.lng}  | Latitude  ${this.state.lat}`;
         document.getElementById('sidebarStyle').textContent = `ISS Position: Longitude ${this.state.lng}  | Latitude  ${this.state.lat}`;
-        setInterval(this.fetch, 1000)
-        setTimeout(this.changeHeading, 1000);
+        setTimeout(this.fetch, 1000)
+        setInterval(this.changeHeading, 1000);
     }
 
     render() {
