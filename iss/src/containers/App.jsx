@@ -67,7 +67,7 @@ class App extends Component {
         document.getElementById('sidebarStyle').innerText = `ISS Position: Longitude ${this.state.lng}  | Latitude  ${this.state.lat}`;
         document.getElementById('sidebarStyle').textContent = `ISS Position: Longitude ${this.state.lng}  | Latitude  ${this.state.lat}`;
         setTimeout(this.fetch, 2000)
-        setInterval(this.changeHeading, 2000);
+        setTimeout(this.changeHeading, 2000);
     }
 
     render() {
