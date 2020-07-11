@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css'
 import mapboxgl from 'mapbox-gl';
-
+import Header from '../components/Header'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZG9yb2JhbnR1biIsImEiOiJja2MwdnEzc20xNTI3MzBuNHlndDhkdjF6In0.ABVT9PxRdE1QJRm_yCuOgA'
 
@@ -64,21 +64,18 @@ class App extends Component {
 
 
     changeHeading = () => {
-        document.getElementById('sidebarStyle').innerText = `ISS Position: Longitude ${this.state.lng}  | Latitude  ${this.state.lat}`;
-        document.getElementById('sidebarStyle').textContent = `ISS Position: Longitude ${this.state.lng}  | Latitude  ${this.state.lat}`;
         setTimeout(this.fetch, 2000)
         setTimeout(this.changeHeading, 2000);
+        document.getElementById('Header').innerText = `ISS Position: Longitude ${this.state.lng}  | Latitude  ${this.state.lat}`;
+        document.getElementById('Header').textContent = `ISS Position: Longitude ${this.state.lng}  | Latitude  ${this.state.lat}`;
     }
 
     render() {
         return (
-            <div>
+            <div className="tc">
                 <div ref={el => this.mapContainer = el} className='mapContainer' />
-                <div className='tc'>
                     <button onClick={this.wrapperFunction} className='button f7 link dim ph3 pv2 mb2 dib white bg-black'>Marker on map!</button>
-                    <h4 id='sidebarStyle' className='sidebarStyle'>
-                    </h4>
-                </div>
+                    <Header position={this.state}/>
             </div >
         )
     }
